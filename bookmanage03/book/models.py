@@ -22,7 +22,7 @@ class PeopleInfo(models.Model):
     gender = models.SmallIntegerField(choices=GENDER_CHOICE, verbose_name='性别', default=0)
     description = models.CharField(max_length=200, verbose_name='人物描述')
     is_delete = models.BooleanField(default=False, verbose_name='逻辑删除')
-    book = models.ForeignKey(to=BookInfo,on_delete=models.CASCADE,verbose_name='图书')
+    book = models.ForeignKey(to=BookInfo,on_delete=models.SE,verbose_name='图书')
     class Meta:
         db_table = 'peopleinfo'
         verbose_name = '人物'
