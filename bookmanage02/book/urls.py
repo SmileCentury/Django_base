@@ -17,7 +17,24 @@ from django.contrib import admin
 from django.urls import path
 from book import views
 
+from django.urls import converters,register_converter
+
+class PhoneConverter:
+    regex = '1[3-9][0-9]{9}'
+
+    def to_python(self, value):
+        return int(value)
+
+    def to_url(self, value):
+        return str(value)
+register_converter(PhoneConverter,'phone')
+
+
 urlpatterns = [
     path('', views.index, name='主页'),
     path('index/', views.index, name='主页'),
+    path('<int:a>/<phone:b>/', views.urla),
+    path('head/', views.heads),
+    path('res/', views.resq),
 ]
+
