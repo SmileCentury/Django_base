@@ -1,7 +1,21 @@
 from django.shortcuts import render, HttpResponse, redirect
 
-
+from django.views import View
 # Create your views here.
+
+class SessionView(View):
+
+    def get(self,request):
+        aa = request.session.get('cc')
+        bb = request.session.get('dd')
+
+        return HttpResponse(f'get_session:cc-{aa},dd-{bb}')
+
+    def post(self,request):
+        request.session['cc'] = '啊啊啊啊啊2222'
+        request.session['dd'] = '不不不不不不222'
+
+        return HttpResponse('set_session:cc,dd')
 
 def index(request):
     return render(request, 'book/index.html')

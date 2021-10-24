@@ -1,9 +1,17 @@
 import json
 from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse
-
+from django.views import View
 
 # Create your views here.
+class GetView(View):
+    def get(self,request):
+        return HttpResponse('这是get方式请求')
+    def post(self,request):
+        return HttpResponse('这是post请求')
+
+
+
 def index(request):
     return render(request, 'book/index.html')
 

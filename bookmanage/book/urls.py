@@ -41,5 +41,6 @@ urlpatterns = [
     path('get_cookie/', views.get_cookie),
     path('set_session/', views.set_session),
     path('get_session/', views.get_session),
+    path('method/', views.MethodView.as_view()),
 
 ]

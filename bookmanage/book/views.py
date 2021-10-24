@@ -1,5 +1,12 @@
 from django.shortcuts import render, HttpResponse
+from django.views import View
 
+class MethodView(View):
+
+    def get(self,request):
+        return HttpResponse('get')
+    def post(self,request):
+        return HttpResponse('post')
 
 # Create your views here.
 def index(request):
@@ -16,7 +23,7 @@ def headers(request):
 
     return HttpResponse(f'<h1>a:{a}</h1></b>b:{b}')
 
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 def uls(request):
     a = request.GET.get('a')
     b = request.GET.get('b')
