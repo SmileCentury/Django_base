@@ -16,9 +16,28 @@ Including another URLconf
 
 from django.urls import path
 from book import views
+from django.urls import converters, register_converter
 
+
+class PhoneConverter:
+    regex = '1[3-9][0-9]{9}'
+
+    def to_python(self, value):
+        return int(value)
+
+    def to_url(self, value):
+        return str(value)
+
+
+register_converter(PhoneConverter, 'phone')
 urlpatterns = [
     path('', views.index),
     path('index/', views.index),
+    path('<a>/<phone:b>/', views.req_ar),
+    path('headers/', views.headers),
+    path('uls/', views.uls),
+    path('json2/', views.json2),
+    path('set_cookie/', views.set_cookie),
+    path('get_cookie/', views.get_cookie),
 
 ]
