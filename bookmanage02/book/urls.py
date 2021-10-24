@@ -36,5 +36,9 @@ urlpatterns = [
     path('<int:a>/<phone:b>/', views.urla),
     path('head/', views.heads),
     path('res/', views.resq),
+    path('set_cookie/', views.set_cookies),
+    path('get_cookie/', views.get_cookie),
+    path('set_session/', views.set_session),
+    path('get_session/', views.get_session),
 ]
 
