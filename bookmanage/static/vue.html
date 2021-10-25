@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+{#    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>#}
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    [[ message]]
+    <hr>
+    <a v-bind:href="text">点我</a>
+    <a href="#" v-if="islogin">个人中心</a>
+    <p v-if ="scree">if</p>
+    <p v-show ="scree">show</p>
+</div>
+</body>
+
+<script type="text/javascript">
+    var app = new Vue({
+        el :'#app',
+        delimiters:['[[',']]'],
+        data:{
+            text : 'https://www.itcast.cn',
+            message:'hello',
+            islogin:true,
+            scree: false
+        }
+        }
+
+    )
+
+</script>
+</html>
