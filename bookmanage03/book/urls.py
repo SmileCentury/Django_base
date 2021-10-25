@@ -40,5 +40,5 @@ urlpatterns = [
     path('get_cookie/', views.get_cookie),  #查询字符串
     path('set_session/',views.set_session),
     path('get_session/',views.get_session),
-    path('classview/',views.SessionView.as_view()),
+    path('pw/',views.MyView.as_view()),
 ]

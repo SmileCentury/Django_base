@@ -3,13 +3,36 @@ from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse
 from django.views import View
 
-# Create your views here.
-class GetView(View):
-    def get(self,request):
-        return HttpResponse('这是get方式请求')
-    def post(self,request):
-        return HttpResponse('这是post请求')
 
+# Create your views here.
+class MyMixin:
+
+    def __init__(self, get_response=None):
+        self.ip_list = {}
+        self.get_response = get_response
+
+    def __call__(self, request):
+        print('请求来了')
+        client_ip = request.META['REMOTE_ADDR']
+        if request.path.startswith('/method'):
+            client_count = self.ip_list.get(client_ip, 0)
+            if client_count >= 5:
+                print('你请求过多')
+                return HttpResponse('你请求过多')
+
+            self.ip_list[client_ip] = client_count + 1
+
+        response = self.get_response(request)
+
+        return response
+
+
+class GetView(View):
+    def get(self, request):
+        return HttpResponse('这是get方式请求')
+
+    def post(self, request):
+        return HttpResponse('这是post请求')
 
 
 def index(request):

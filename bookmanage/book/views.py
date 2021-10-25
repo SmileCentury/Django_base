@@ -1,5 +1,26 @@
 from django.shortcuts import render, HttpResponse
 from django.views import View
+from django.utils.deprecation import MiddlewareMixin
+
+class MyMiddle(MiddlewareMixin):
+    def __init__(self, get_response=None):
+        super().__init__(get_response)
+
+        self.ipList = {}
+
+
+    def process_request(self,request):
+
+        if request.path.startswith('/method'):
+            client_ip = request.META['REMOTE_ADDR']
+            count = self.ipList.get(client_ip,0)
+            if count >=5:
+                return HttpResponse('请求过多')
+            self.ipList[client_ip] = count + 1
+            print('该ip 已请求',count+1,'次')
+
+
+
 
 class MethodView(View):
 

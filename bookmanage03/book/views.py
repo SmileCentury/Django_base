@@ -1,19 +1,23 @@
 from django.shortcuts import render, HttpResponse, redirect
 
-from django.views import View
+
 # Create your views here.
+from django.views import View
 
-class SessionView(View):
 
+class MyView(View):
+    """类视图"""
     def get(self,request):
+        """处理GET请求，获取session"""
         aa = request.session.get('cc')
         bb = request.session.get('dd')
 
         return HttpResponse(f'get_session:cc-{aa},dd-{bb}')
 
     def post(self,request):
-        request.session['cc'] = '啊啊啊啊啊2222'
-        request.session['dd'] = '不不不不不不222'
+        """处理POST请求，设置session"""
+        request.session['cc'] = 'c2222'
+        request.session['dd'] = 'dd222'
 
         return HttpResponse('set_session:cc,dd')
 
