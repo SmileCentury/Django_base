@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="book">
+{{ message }}
+    [[ message ]]
+    <a v-bind:href="ht">baidu</a>
+    <p v-if="level ==1">大学</p>
+    <p v-else-if="level ==2">高中</p>
+    <p v-else>小学</p>
+</div>
+
+</body>
+<script type="text/javascript">
+    var book = new Vue(        {
+            el:'#book',
+            delimiters:['[[',']]'],
+            data:{
+                                message:'单引号',
+                level:'16',
+                ht:'https://www.baidu.com'
+            }
+        }
+    )
+</script>
+</html>

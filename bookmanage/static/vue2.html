@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js">
+
+    </script>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    uu message uu
+<p v-if="isShow">显示</p>
+<p v-else>只显示一个</p>
+    <p v-if="level === 1">大佬</p>
+    <p v-else-if="level === 2">大牛</p>
+    <p v-else-if="level === 3">博士</p>
+    <p v-else-if="level === 4">硕士</p>
+    <p v-else>渣渣</p>
+    <a :href="addr">baidu</a>
+</div>
+</body>
+<script type="text/javascript">
+    var app = new Vue ({
+        el :'#app',
+        delimiters:['uu','uu'],
+        data: {
+            message:'你好',
+
+            isShow:true,
+            level:10,
+            addr:'https://www.baidu.com'
+        }
+
+    })
+</script>
+
+
+</html>
