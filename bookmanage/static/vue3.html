@@ -13,6 +13,15 @@
     <p v-if="level ==1">大学</p>
     <p v-else-if="level ==2">高中</p>
     <p v-else>小学</p>
+    <hr>
+    <p v-for="i in list">[[i.a + i.a]]</p>
+    <hr>
+    <p>method 事件</p>
+    <button v-on:click="count+=1">点我加1</button>
+    <br>
+    <button v-on:click="add(2)">加加</button>
+    [[ count]]
+
 </div>
 
 </body>
@@ -23,7 +32,18 @@
             data:{
                                 message:'单引号',
                 level:'16',
-                ht:'https://www.baidu.com'
+                count:1,
+                ht:'https://www.baidu.com',
+                list:[
+                    {a:'10'},
+                    {a:'20'},
+                    {a:30}
+                ]
+            },
+            methods:{
+                add:function (num){
+                    this.count += num
+                }
             }
         }
     )

@@ -22,18 +22,46 @@
     <p v-else-if="level === 4">硕士</p>
     <p v-else>渣渣</p>
     <a :href="addr">baidu</a>
+    <hr>
+    <p>for 循环</p>
+
+        <p v-for="i,j in list">{{ i}}{{j}}</p>
+<p v-for="i,j in dict">{{ i }}:{{ j }}</p>
+    <hr>
+    <p>methods 事件</p>
+    <button v-on:click="level += 1">add 1</button>
+    <p>{{ level }}</p>
+    <button v-on:click="level_up(2)">函数加1</button>
+    <p>{{ level }}</p>
 </div>
 </body>
 <script type="text/javascript">
     var app = new Vue ({
         el :'#app',
-        delimiters:['uu','uu'],
+
         data: {
             message:'你好',
 
             isShow:true,
             level:10,
-            addr:'https://www.baidu.com'
+            addr:'https://www.baidu.com',
+            list:[
+                {a:10},
+                {b:20},
+                {c:30}
+
+            ],
+            dict:{
+                a:10,
+                b:20,
+                c:30
+            }
+        },
+
+        methods:{
+            level_up:function (num){
+                this.level += num
+            }
         }
 
     })
